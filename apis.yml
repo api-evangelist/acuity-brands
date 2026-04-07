@@ -1,7 +1,12 @@
 aid: acuity-brands
-url: https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.acuity-brands.com
+description: >-
+  Acuity Brands is a provider of lighting, lighting controls, building management
+  systems, and location-aware applications for commercial, industrial, institutional,
+  and residential markets.
