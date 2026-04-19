@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-shipment-list-schema.json",
+  "title": "ShipmentList",
+  "description": "List of shipments for an order",
+  "type": "object",
+  "properties": {
+    "shipments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Shipment"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 2
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "shipmentId": "SHP-001",
+  "orderId": "ACB-2026-001234",
+  "carrier": "UPS Freight",
+  "proNumber": "1Z999AA10123456784",
+  "trackingUrl": "https://www.ups.com/track?tracknum=1Z999AA10123456784",
+  "shipDate": "2026-04-19",
+  "estimatedDeliveryDate": "2026-04-22",
+  "weight": 45.5,
+  "lineItems": []
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-shipment-list-structure.json",
+  "title": "ShipmentList",
+  "description": "List of shipments for an order",
+  "type": "object",
+  "properties": {
+    "shipments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

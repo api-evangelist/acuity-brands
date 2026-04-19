@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-inventory-list-schema.json",
+  "title": "InventoryList",
+  "description": "Paginated list of inventory items",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InventoryItem"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 5000
+    },
+    "cursor": {
+      "type": "string",
+      "example": "eyJwYWdlIjoyfQ=="
+    }
+  }
+}

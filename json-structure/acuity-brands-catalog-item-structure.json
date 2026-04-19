@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-catalog-item-structure.json",
+  "title": "CatalogItem",
+  "description": "Acuity Brands product catalog item",
+  "type": "object",
+  "properties": {
+    "productNumber": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "specifications": {
+      "type": "object"
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "listPrice": {
+      "type": "number"
+    },
+    "upc": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "dataSheetUrl": {
+      "type": "string"
+    }
+  }
+}

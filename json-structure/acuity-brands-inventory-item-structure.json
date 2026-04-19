@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-inventory-item-structure.json",
+  "title": "InventoryItem",
+  "description": "Inventory availability record for a product",
+  "type": "object",
+  "properties": {
+    "productNumber": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "totalQuantity": {
+      "type": "integer"
+    },
+    "warehouses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  }
+}

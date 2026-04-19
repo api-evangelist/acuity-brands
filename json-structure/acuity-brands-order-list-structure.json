@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-order-list-structure.json",
+  "title": "OrderList",
+  "description": "Paginated list of orders",
+  "type": "object",
+  "properties": {
+    "orders": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "total": {
+      "type": "integer"
+    },
+    "cursor": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-catalog-item-list-structure.json",
+  "title": "CatalogItemList",
+  "description": "Paginated list of catalog items",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "total": {
+      "type": "integer"
+    },
+    "cursor": {
+      "type": "string"
+    }
+  }
+}

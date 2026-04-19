@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-webpage-list-schema.json",
+  "title": "WebpageList",
+  "description": "Paginated list of web pages",
+  "type": "object",
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Webpage"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 10000
+    },
+    "cursor": {
+      "type": "string"
+    }
+  }
+}

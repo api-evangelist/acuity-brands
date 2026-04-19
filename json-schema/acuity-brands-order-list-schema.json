@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-order-list-schema.json",
+  "title": "OrderList",
+  "description": "Paginated list of orders",
+  "type": "object",
+  "properties": {
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 200
+    },
+    "cursor": {
+      "type": "string"
+    }
+  }
+}

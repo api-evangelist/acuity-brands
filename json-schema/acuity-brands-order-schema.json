@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-order-schema.json",
+  "title": "Order",
+  "description": "An Acuity Brands order with status and shipment information",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Acuity Brands order number",
+      "example": "ACB-2026-001234"
+    },
+    "purchaseOrderNumber": {
+      "type": "string",
+      "description": "Distributor purchase order number",
+      "example": "PO-55678"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled"
+      ],
+      "example": "shipped"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date order was placed",
+      "example": "2026-04-15"
+    },
+    "estimatedShipDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Estimated ship date",
+      "example": "2026-04-20"
+    },
+    "actualShipDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Actual ship date",
+      "example": "2026-04-19"
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Order line items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lineNumber": {
+            "type": "integer",
+            "example": 1
+          },
+          "productNumber": {
+            "type": "string",
+            "example": "LBL4 48L ADP"
+          },
+          "description": {
+            "type": "string",
+            "example": "4FT LED Wrap Light"
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 10
+          },
+          "unitPrice": {
+            "type": "number",
+            "example": 45.5
+          },
+          "status": {
+            "type": "string",
+            "example": "shipped"
+          }
+        }
+      }
+    },
+    "totalAmount": {
+      "type": "number",
+      "description": "Total order amount",
+      "example": 455.0
+    },
+    "shipToAddress": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "ABC Electrical Distributors"
+        },
+        "street": {
+          "type": "string",
+          "example": "123 Main St"
+        },
+        "city": {
+          "type": "string",
+          "example": "Atlanta"
+        },
+        "state": {
+          "type": "string",
+          "example": "GA"
+        },
+        "zip": {
+          "type": "string",
+          "example": "30301"
+        }
+      }
+    }
+  }
+}

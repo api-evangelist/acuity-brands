@@ -1,0 +1,18 @@
+{
+  "productNumber": "LBL4 48L ADP",
+  "name": "4FT LED Wrap Light 4800 Lumens Adapter",
+  "brand": "Lithonia Lighting",
+  "category": "Indoor Lighting",
+  "subcategory": "Wrap Lights",
+  "description": "example-description",
+  "specifications": {},
+  "certifications": [
+    "UL Listed",
+    "Energy Star",
+    "DLC Listed"
+  ],
+  "listPrice": 89.99,
+  "upc": "041194682000",
+  "imageUrl": "example-imageUrl",
+  "dataSheetUrl": "example-dataSheetUrl"
+}

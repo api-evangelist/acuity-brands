@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-webpage-schema.json",
+  "title": "Webpage",
+  "description": "Acuity Brands product or content web page",
+  "type": "object",
+  "properties": {
+    "pageId": {
+      "type": "string",
+      "description": "Page identifier",
+      "example": "lithonia-lbl4"
+    },
+    "url": {
+      "type": "string",
+      "description": "Canonical page URL",
+      "example": "https://www.acuitybrands.com/products/lbl4"
+    },
+    "title": {
+      "type": "string",
+      "description": "Page title",
+      "example": "LBL4 LED Wrap Light"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "product",
+        "category",
+        "landing",
+        "support"
+      ],
+      "description": "Page type",
+      "example": "product"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Associated brand",
+      "example": "Lithonia Lighting"
+    },
+    "metaDescription": {
+      "type": "string",
+      "description": "SEO meta description"
+    },
+    "productNumber": {
+      "type": "string",
+      "description": "Associated product number if product page",
+      "example": "LBL4 48L ADP"
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Page last modified timestamp"
+    }
+  }
+}

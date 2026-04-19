@@ -1,0 +1,198 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Acuity Brands"
+  description: "Unified taxonomy mapping operational (OpenAPI) and capability (Naftiko) dimensions for Acuity Brands B2B distributor APIs covering inventory, order management, product catalog, and web content."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Acuity Brands API
+      namespace: acuity-brands
+      version: "1.0.0"
+      baseUrl: "https://api.acuitybrands.com/v1"
+      status: active
+
+  resources:
+    - name: inventory-item
+      api: acuity-brands
+      description: "Product inventory availability with per-warehouse stock and estimated ship dates"
+      actions: [list, get]
+    - name: order
+      api: acuity-brands
+      description: "Distributor order with status, line items, and ship dates"
+      actions: [list, get]
+    - name: shipment
+      api: acuity-brands
+      description: "Shipment record with carrier, pro number, and tracking details"
+      actions: [list]
+    - name: catalog-item
+      api: acuity-brands
+      description: "Acuity Brands product catalog entry with specs, certifications, and pricing"
+      actions: [list, get]
+    - name: webpage
+      api: acuity-brands
+      description: "Acuity Brands product or content web page"
+      actions: [list, get]
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: "Retrieve a paginated list of resources"
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: "Retrieve a single resource by identifier"
+
+  schemas:
+    inventory:
+      - name: InventoryItem
+        properties: [productNumber, description, brand, totalQuantity, warehouses, updatedAt]
+        description: "Product inventory availability"
+    orders:
+      - name: Order
+        properties: [orderId, purchaseOrderNumber, status, orderDate, estimatedShipDate, actualShipDate, lineItems, totalAmount, shipToAddress]
+        description: "Distributor order"
+      - name: Shipment
+        properties: [shipmentId, orderId, carrier, proNumber, trackingUrl, shipDate, estimatedDeliveryDate, weight, lineItems]
+        description: "Order shipment record"
+    catalog:
+      - name: CatalogItem
+        properties: [productNumber, name, brand, category, subcategory, description, specifications, certifications, listPrice, upc, imageUrl, dataSheetUrl]
+        description: "Product catalog item"
+    webpages:
+      - name: Webpage
+        properties: [pageId, url, title, type, brand, metaDescription, productNumber, lastModified]
+        description: "Acuity Brands web page"
+
+  parameters:
+    identifiers:
+      - name: productNumber
+        type: string
+        description: "Acuity Brands product number or SKU"
+      - name: orderId
+        type: string
+        description: "Acuity Brands order number"
+      - name: pageId
+        type: string
+        description: "Web page identifier"
+    filters:
+      - name: brand
+        type: string
+        description: "Brand name filter (Lithonia, Holophane, nLight, etc.)"
+      - name: status
+        type: string
+        description: "Order status filter"
+      - name: category
+        type: string
+        description: "Product category filter"
+      - name: limit
+        type: integer
+        description: "Maximum results per page"
+      - name: cursor
+        type: string
+        description: "Seek-based pagination cursor"
+
+  enums:
+    order-status:
+      - pending
+      - processing
+      - shipped
+      - delivered
+      - cancelled
+    product-categories:
+      - Indoor Lighting
+      - Outdoor Lighting
+      - Controls
+      - Emergency Lighting
+      - Building Management
+    brands:
+      - Lithonia Lighting
+      - Holophane
+      - nLight
+      - Atrius
+      - Distech Controls
+      - Juno Lighting
+      - Sensor Switch
+
+  authentication:
+    schemes:
+      - name: BasicAuth
+        type: http
+        scheme: basic
+        description: "HTTP Basic Auth using numeric User ID and API Key from Acuity Brands developer portal"
+        apis: [acuity-brands]
+
+capability:
+  workflows:
+    - name: Distributor Integration
+      file: capabilities/distributor-integration.yaml
+      description: "Inventory lookup, order tracking, product catalog search, and shipment tracking for distributors"
+      apis: [acuity-brands]
+      tools: 7
+      personas: [Electrical Distributor, ERP Integration Developer, E-Commerce Developer]
+      domains: [Lighting, B2B Commerce]
+
+  personas:
+    - id: electrical-distributor
+      name: Electrical Distributor
+      description: "Electrical distributors who carry Acuity Brands products and need real-time inventory and order data"
+      workflows: [Distributor Integration]
+    - id: erp-integration-developer
+      name: ERP Integration Developer
+      description: "Developers integrating Acuity Brands data into ERP systems for automated ordering and inventory sync"
+      workflows: [Distributor Integration]
+    - id: ecommerce-developer
+      name: E-Commerce Developer
+      description: "Developers building e-commerce sites that display Acuity Brands product data, pricing, and availability"
+      workflows: [Distributor Integration]
+
+  domains:
+    - name: Lighting
+      description: "Commercial, industrial, and residential lighting products and controls"
+      resources: [inventory-item, catalog-item, webpage]
+    - name: B2B Commerce
+      description: "B2B distributor ordering, inventory management, and shipment tracking"
+      resources: [order, shipment, inventory-item]
+
+  namespaces:
+    - name: acuity-brands
+      type: consumed
+    - name: distributor-integration-api
+      type: rest-exposed
+      port: 8080
+    - name: distributor-integration-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: ACUITY_BRANDS_USER_ID
+      description: "Numeric user ID for Acuity Brands API Basic Auth"
+      workflows: [Distributor Integration]
+    - name: ACUITY_BRANDS_API_KEY
+      description: "API key for Acuity Brands API Basic Auth"
+      workflows: [Distributor Integration]
+
+crossReference:
+  - resource: inventory-item
+    operations: [list-inventory, get-inventory-item]
+    workflows: [Distributor Integration]
+    personas: [Electrical Distributor, E-Commerce Developer]
+  - resource: order
+    operations: [list-orders, get-order]
+    workflows: [Distributor Integration]
+    personas: [Electrical Distributor, ERP Integration Developer]
+  - resource: shipment
+    operations: [get-order-shipments]
+    workflows: [Distributor Integration]
+    personas: [Electrical Distributor, ERP Integration Developer]
+  - resource: catalog-item
+    operations: [list-catalog-items, get-catalog-item]
+    workflows: [Distributor Integration]
+    personas: [E-Commerce Developer, ERP Integration Developer]
+  - resource: webpage
+    operations: [list-webpages, get-webpage]
+    workflows: [Distributor Integration]
+    personas: [E-Commerce Developer]

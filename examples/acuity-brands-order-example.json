@@ -1,0 +1,11 @@
+{
+  "orderId": "ACB-2026-001234",
+  "purchaseOrderNumber": "PO-55678",
+  "status": "shipped",
+  "orderDate": "2026-04-15",
+  "estimatedShipDate": "2026-04-20",
+  "actualShipDate": "2026-04-19",
+  "lineItems": [],
+  "totalAmount": 455.0,
+  "shipToAddress": {}
+}

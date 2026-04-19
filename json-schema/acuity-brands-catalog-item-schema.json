@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-catalog-item-schema.json",
+  "title": "CatalogItem",
+  "description": "Acuity Brands product catalog item",
+  "type": "object",
+  "properties": {
+    "productNumber": {
+      "type": "string",
+      "description": "Product number/SKU",
+      "example": "LBL4 48L ADP"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name",
+      "example": "4FT LED Wrap Light 4800 Lumens Adapter"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Brand name",
+      "example": "Lithonia Lighting"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category",
+      "example": "Indoor Lighting"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Product subcategory",
+      "example": "Wrap Lights"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full product description"
+    },
+    "specifications": {
+      "type": "object",
+      "description": "Technical specifications",
+      "additionalProperties": true
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Product certifications",
+      "example": [
+        "UL Listed",
+        "Energy Star",
+        "DLC Listed"
+      ]
+    },
+    "listPrice": {
+      "type": "number",
+      "description": "List price in USD",
+      "example": 89.99
+    },
+    "upc": {
+      "type": "string",
+      "description": "UPC code",
+      "example": "041194682000"
+    },
+    "imageUrl": {
+      "type": "string",
+      "description": "Primary product image URL"
+    },
+    "dataSheetUrl": {
+      "type": "string",
+      "description": "Product data sheet URL"
+    }
+  }
+}

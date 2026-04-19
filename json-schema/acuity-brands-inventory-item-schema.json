@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-inventory-item-schema.json",
+  "title": "InventoryItem",
+  "description": "Inventory availability record for a product",
+  "type": "object",
+  "properties": {
+    "productNumber": {
+      "type": "string",
+      "description": "Acuity Brands product number",
+      "example": "LBL4 48L ADP"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description",
+      "example": "4FT LED Wrap Light 4800 Lumens"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Brand name",
+      "example": "Lithonia Lighting"
+    },
+    "totalQuantity": {
+      "type": "integer",
+      "description": "Total available quantity across all warehouses",
+      "example": 250
+    },
+    "warehouses": {
+      "type": "array",
+      "description": "Per-warehouse availability",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "ATL"
+          },
+          "name": {
+            "type": "string",
+            "example": "Atlanta Distribution Center"
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 150
+          },
+          "estimatedShipDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2026-04-22"
+          }
+        }
+      }
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last inventory update time"
+    }
+  }
+}

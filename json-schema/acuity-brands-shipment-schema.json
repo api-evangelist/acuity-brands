@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://schema.api-evangelist.com/acuity-brands/acuity-brands-shipment-schema.json",
+  "title": "Shipment",
+  "description": "Shipment record for an order",
+  "type": "object",
+  "properties": {
+    "shipmentId": {
+      "type": "string",
+      "description": "Shipment identifier",
+      "example": "SHP-001"
+    },
+    "orderId": {
+      "type": "string",
+      "description": "Associated order ID",
+      "example": "ACB-2026-001234"
+    },
+    "carrier": {
+      "type": "string",
+      "description": "Shipping carrier name",
+      "example": "UPS Freight"
+    },
+    "proNumber": {
+      "type": "string",
+      "description": "Carrier PRO/tracking number",
+      "example": "1Z999AA10123456784"
+    },
+    "trackingUrl": {
+      "type": "string",
+      "description": "Carrier tracking URL",
+      "example": "https://www.ups.com/track?tracknum=1Z999AA10123456784"
+    },
+    "shipDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-04-19"
+    },
+    "estimatedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-04-22"
+    },
+    "weight": {
+      "type": "number",
+      "description": "Shipment weight in lbs",
+      "example": 45.5
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "Line items in this shipment",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lineNumber": {
+            "type": "integer",
+            "example": 1
+          },
+          "productNumber": {
+            "type": "string",
+            "example": "LBL4 48L ADP"
+          },
+          "quantityShipped": {
+            "type": "integer",
+            "example": 10
+          }
+        }
+      }
+    }
+  }
+}

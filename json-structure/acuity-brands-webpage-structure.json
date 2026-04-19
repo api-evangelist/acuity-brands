@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-webpage-structure.json",
+  "title": "Webpage",
+  "description": "Acuity Brands product or content web page",
+  "type": "object",
+  "properties": {
+    "pageId": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "string"
+    },
+    "productNumber": {
+      "type": "string"
+    },
+    "lastModified": {
+      "type": "string"
+    }
+  }
+}

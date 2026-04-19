@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://structure.api-evangelist.com/acuity-brands/acuity-brands-webpage-list-structure.json",
+  "title": "WebpageList",
+  "description": "Paginated list of web pages",
+  "type": "object",
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "total": {
+      "type": "integer"
+    },
+    "cursor": {
+      "type": "string"
+    }
+  }
+}
