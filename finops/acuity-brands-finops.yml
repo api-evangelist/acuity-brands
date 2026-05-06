@@ -1,127 +1,78 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: acuity-brands
+provider: Acuity Brands
 providerId: acuity-brands
-publisherName: acuity-brands
-serviceCategory: API
+publisherName: Acuity Brands Lighting, Inc.
+serviceCategory: Lighting / Building Controls
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
+  - Lighting
+  - B2B
+  - Inventory
+  - Order Management
+  - Building Controls
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the acuity-brands API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: FOCUS-aligned FinOps scaffold for the Acuity Brands distributor API. Acuity Brands invoices
+  distributors for product (hardware) — not for API access. The API is bundled into the partner relationship,
+  so FinOps relevance is to the consuming distributor's integration economics, not a separately-billed
+  Acuity surface.
+sources:
+  - https://api-docs.acuitybrands.com/
+notes: No commercial API line item. Reconciled flag is false because there is no provider invoice that
+  separates API from product spend.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Bundled With Distributor Agreement
+  billingFrequency: Per-Order
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: acuity-brands
-  ServiceCategory: Developer Tools / API
-  ProviderName: acuity-brands
-  PublisherName: acuity-brands
-  InvoiceIssuerName: acuity-brands
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Acuity Brands API
+  ServiceCategory: Lighting / Building Controls
+  ProviderName: Acuity Brands
+  PublisherName: Acuity Brands Lighting, Inc.
+  InvoiceIssuerName: Acuity Brands Lighting, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: api_request
+    description: API request consumed against the distributor's allocation; not directly billed.
     unit: request
     aggregation: sum
     dimensions:
-      - api
       - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - distributor
+  - name: product_order
+    description: B2B order placed through Acuity's order-entry surface (the underlying business transaction
+      that the API supports).
+    unit: order
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Acuity Brands API
-    baseURL: ''
-    tags:
-      - Lighting
-      - B2B
-      - Inventory
-      - Order Management
-      - Building Controls
-    serviceName: Acuity Brands API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
-maintainers: []
+      - distributor
+      - product_family
+principles:
+  - name: Visibility
+    description: There is no Acuity API invoice. Visibility is internal to the distributor — track which
+      ERP / e-commerce systems hit the API and at what frequency.
+  - name: Allocation
+    description: Allocate integration cost (distributor-side compute and engineering) to the function
+      it supports — order entry, catalog refresh, inventory checks.
+  - name: Optimization
+    description: Cache catalog and inventory responses where appropriate, batch order-status polls, and
+      avoid duplicate calls across multiple internal systems.
+  - name: Accountability
+    description: The distributor's IT integration owner is accountable; Acuity Brands acts as a partner
+      contact for limit increases.
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
