@@ -1,163 +1,327 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Acuity Brands Distributor Integration"
-  description: "Workflow for distributor integration with Acuity Brands covering inventory lookup, order status tracking, product catalog search, and shipment tracking. Used by electrical distributors integrating Acuity Brands data into ERP and e-commerce systems."
+  label: Acuity Brands Distributor Integration
+  description: Workflow for distributor integration with Acuity Brands covering inventory lookup, order status tracking, product
+    catalog search, and shipment tracking. Used by electrical distributors integrating Acuity Brands data into ERP and e-commerce
+    systems.
   tags:
-    - Acuity Brands
-    - Lighting
-    - B2B
-    - Distributor
-    - Inventory
-    - Order Management
-  created: "2026-04-19"
-  modified: "2026-04-19"
-
+  - Acuity Brands
+  - Lighting
+  - B2B
+  - Distributor
+  - Inventory
+  - Order Management
+  created: '2026-04-19'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      ACUITY_BRANDS_USER_ID: ACUITY_BRANDS_USER_ID
-      ACUITY_BRANDS_API_KEY: ACUITY_BRANDS_API_KEY
-
+- namespace: env
+  keys:
+    ACUITY_BRANDS_USER_ID: ACUITY_BRANDS_USER_ID
+    ACUITY_BRANDS_API_KEY: ACUITY_BRANDS_API_KEY
 capability:
   consumes:
-    - import: acuity-brands
-      location: ./shared/acuity-brands.yaml
-
+  - type: http
+    namespace: acuity-brands
+    baseUri: https://api.acuitybrands.com/v1
+    description: Acuity Brands production API
+    authentication:
+      type: basic
+      username: '{{ACUITY_BRANDS_USER_ID}}'
+      password: '{{ACUITY_BRANDS_API_KEY}}'
+    resources:
+    - name: inventory
+      path: /inventory
+      description: Product inventory and availability
+      operations:
+      - name: list-inventory
+        method: GET
+        description: List inventory availability
+        inputParameters:
+        - name: productNumber
+          in: query
+          type: string
+          required: false
+          description: Product number filter
+        - name: brand
+          in: query
+          type: string
+          required: false
+          description: Brand filter
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Page size
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-inventory-item
+        method: GET
+        description: Get inventory for a specific product
+        inputParameters:
+        - name: productNumber
+          in: path
+          type: string
+          required: true
+          description: Product number
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders
+      path: /orders
+      description: Order status and tracking
+      operations:
+      - name: list-orders
+        method: GET
+        description: List orders with status
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          required: false
+          description: Status filter
+        - name: fromDate
+          in: query
+          type: string
+          required: false
+          description: From date filter
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Page size
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-order
+        method: GET
+        description: Get a specific order
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+          description: Order identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-order-shipments
+        method: GET
+        description: Get shipment records for an order
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+          description: Order identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: catalog
+      path: /catalog/items
+      description: Product catalog
+      operations:
+      - name: list-catalog-items
+        method: GET
+        description: Search the product catalog
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: false
+          description: Keyword search
+        - name: brand
+          in: query
+          type: string
+          required: false
+          description: Brand filter
+        - name: category
+          in: query
+          type: string
+          required: false
+          description: Category filter
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Page size
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-catalog-item
+        method: GET
+        description: Get a specific product
+        inputParameters:
+        - name: productNumber
+          in: path
+          type: string
+          required: true
+          description: Product number
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: distributor-integration-api
-      description: "Unified REST API for Acuity Brands distributor integration."
-      resources:
-        - path: /v1/inventory
-          name: inventory
-          description: "Product inventory availability"
-          operations:
-            - method: GET
-              name: list-inventory
-              description: "List inventory with optional filters"
-              call: "acuity-brands.list-inventory"
-              with:
-                productNumber: "rest.productNumber"
-                brand: "rest.brand"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/orders
-          name: orders
-          description: "Order status and tracking"
-          operations:
-            - method: GET
-              name: list-orders
-              description: "List orders"
-              call: "acuity-brands.list-orders"
-              with:
-                status: "rest.status"
-                fromDate: "rest.fromDate"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/catalog
-          name: catalog
-          description: "Product catalog search"
-          operations:
-            - method: GET
-              name: list-catalog
-              description: "Search product catalog"
-              call: "acuity-brands.list-catalog-items"
-              with:
-                q: "rest.q"
-                brand: "rest.brand"
-                category: "rest.category"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: distributor-integration-mcp
-      transport: http
-      description: "MCP server for AI-assisted Acuity Brands distributor operations."
-      tools:
-        - name: check-inventory
-          description: "Check inventory availability for an Acuity Brands product by product number or brand"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "acuity-brands.list-inventory"
-          with:
-            productNumber: "tools.productNumber"
-            brand: "tools.brand"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-product-inventory
-          description: "Get detailed inventory including warehouse locations and estimated ship dates for a specific product"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "acuity-brands.get-inventory-item"
-          with:
-            productNumber: "tools.productNumber"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: track-order
-          description: "Get full order status and details including estimated and actual ship dates"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "acuity-brands.get-order"
-          with:
-            orderId: "tools.orderId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: track-shipment
-          description: "Get shipment records for an order including carrier name and pro number for freight tracking"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "acuity-brands.get-order-shipments"
-          with:
-            orderId: "tools.orderId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-products
-          description: "Search the Acuity Brands product catalog by keyword, brand, or product category"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "acuity-brands.list-catalog-items"
-          with:
-            q: "tools.q"
-            brand: "tools.brand"
-            category: "tools.category"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-product
-          description: "Get full product details including specifications, certifications, list price, and data sheet"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "acuity-brands.get-catalog-item"
-          with:
-            productNumber: "tools.productNumber"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-orders
-          description: "List recent orders filtered by status or date range"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "acuity-brands.list-orders"
-          with:
-            status: "tools.status"
-            fromDate: "tools.fromDate"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: distributor-integration-api
+    description: Unified REST API for Acuity Brands distributor integration.
+    resources:
+    - path: /v1/inventory
+      name: inventory
+      description: Product inventory availability
+      operations:
+      - method: GET
+        name: list-inventory
+        description: List inventory with optional filters
+        call: acuity-brands.list-inventory
+        with:
+          productNumber: rest.productNumber
+          brand: rest.brand
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders
+      name: orders
+      description: Order status and tracking
+      operations:
+      - method: GET
+        name: list-orders
+        description: List orders
+        call: acuity-brands.list-orders
+        with:
+          status: rest.status
+          fromDate: rest.fromDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/catalog
+      name: catalog
+      description: Product catalog search
+      operations:
+      - method: GET
+        name: list-catalog
+        description: Search product catalog
+        call: acuity-brands.list-catalog-items
+        with:
+          q: rest.q
+          brand: rest.brand
+          category: rest.category
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: distributor-integration-mcp
+    transport: http
+    description: MCP server for AI-assisted Acuity Brands distributor operations.
+    tools:
+    - name: check-inventory
+      description: Check inventory availability for an Acuity Brands product by product number or brand
+      hints:
+        readOnly: true
+        openWorld: true
+      call: acuity-brands.list-inventory
+      with:
+        productNumber: tools.productNumber
+        brand: tools.brand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-product-inventory
+      description: Get detailed inventory including warehouse locations and estimated ship dates for a specific product
+      hints:
+        readOnly: true
+        openWorld: false
+      call: acuity-brands.get-inventory-item
+      with:
+        productNumber: tools.productNumber
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: track-order
+      description: Get full order status and details including estimated and actual ship dates
+      hints:
+        readOnly: true
+        openWorld: false
+      call: acuity-brands.get-order
+      with:
+        orderId: tools.orderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: track-shipment
+      description: Get shipment records for an order including carrier name and pro number for freight tracking
+      hints:
+        readOnly: true
+        openWorld: false
+      call: acuity-brands.get-order-shipments
+      with:
+        orderId: tools.orderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-products
+      description: Search the Acuity Brands product catalog by keyword, brand, or product category
+      hints:
+        readOnly: true
+        openWorld: true
+      call: acuity-brands.list-catalog-items
+      with:
+        q: tools.q
+        brand: tools.brand
+        category: tools.category
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-product
+      description: Get full product details including specifications, certifications, list price, and data sheet
+      hints:
+        readOnly: true
+        openWorld: false
+      call: acuity-brands.get-catalog-item
+      with:
+        productNumber: tools.productNumber
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-orders
+      description: List recent orders filtered by status or date range
+      hints:
+        readOnly: true
+        openWorld: true
+      call: acuity-brands.list-orders
+      with:
+        status: tools.status
+        fromDate: tools.fromDate
+      outputParameters:
+      - type: object
+        mapping: $.
