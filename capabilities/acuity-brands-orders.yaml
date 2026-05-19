@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Acuity Brands API — Orders
+  description: 'Acuity Brands API — Orders. 3 operations. Lead operation: Acuity Brands List Orders. Self-contained Naftiko
+    capability covering one Acuity Brands business surface.'
+  tags:
+  - Acuity Brands
+  - Orders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ACUITY_BRANDS_API_KEY: ACUITY_BRANDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: acuity-brands-orders
+    baseUri: https://api.acuitybrands.com/v1
+    description: Acuity Brands API — Orders business capability. Self-contained, no shared references.
+    resources:
+    - name: orders
+      path: /orders
+      operations:
+      - name: listorders
+        method: GET
+        description: Acuity Brands List Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by order status (pending, processing, shipped, delivered)
+        - name: fromDate
+          in: query
+          type: string
+          description: Filter orders placed on or after this date (ISO 8601)
+        - name: toDate
+          in: query
+          type: string
+          description: Filter orders placed on or before this date (ISO 8601)
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results
+        - name: cursor
+          in: query
+          type: string
+          description: Pagination cursor
+    - name: orders-orderId
+      path: /orders/{orderId}
+      operations:
+      - name: getorder
+        method: GET
+        description: Acuity Brands Get Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          description: Acuity Brands order identifier
+          required: true
+    - name: orders-orderId-shipments
+      path: /orders/{orderId}/shipments
+      operations:
+      - name: getordershipments
+        method: GET
+        description: Acuity Brands Get Order Shipments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          description: Acuity Brands order identifier
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.ACUITY_BRANDS_USER}}'
+      password: '{{env.ACUITY_BRANDS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: acuity-brands-orders-rest
+    port: 8080
+    description: REST adapter for Acuity Brands API — Orders. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/orders
+      name: orders
+      description: REST surface for orders.
+      operations:
+      - method: GET
+        name: listorders
+        description: Acuity Brands List Orders
+        call: acuity-brands-orders.listorders
+        with:
+          status: rest.status
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}
+      name: orders-orderid
+      description: REST surface for orders-orderId.
+      operations:
+      - method: GET
+        name: getorder
+        description: Acuity Brands Get Order
+        call: acuity-brands-orders.getorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}/shipments
+      name: orders-orderid-shipments
+      description: REST surface for orders-orderId-shipments.
+      operations:
+      - method: GET
+        name: getordershipments
+        description: Acuity Brands Get Order Shipments
+        call: acuity-brands-orders.getordershipments
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: acuity-brands-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Acuity Brands API — Orders. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: acuity-brands-list-orders
+      description: Acuity Brands List Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: acuity-brands-orders.listorders
+      with:
+        status: tools.status
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: acuity-brands-get-order
+      description: Acuity Brands Get Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: acuity-brands-orders.getorder
+      with:
+        orderId: tools.orderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: acuity-brands-get-order-shipments
+      description: Acuity Brands Get Order Shipments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: acuity-brands-orders.getordershipments
+      with:
+        orderId: tools.orderId
+      outputParameters:
+      - type: object
+        mapping: $.
