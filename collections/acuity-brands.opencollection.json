@@ -1,0 +1,310 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acuity Brands API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/inventory",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Acuity Brands product number"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand (e.g. Lithonia, Holophane, nLight)"
+              },
+              {
+                "name": "warehouse",
+                "value": "",
+                "type": "query",
+                "description": "Filter by warehouse location code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Retrieve inventory availability for Acuity Brands products. Returns stock levels, warehouse locations, and estimated availability dates."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Inventory Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/inventory/:productNumber",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands product number"
+              }
+            ]
+          },
+          "docs": "Retrieve inventory availability for a specific product number including stock by warehouse and estimated ship dates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order status (pending, processing, shipped, delivered)"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders placed on or after this date (ISO 8601)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders placed on or before this date (ISO 8601)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of orders with their current status, estimated ship dates, and tracking information."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands order identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve full order status details including line items, estimated ship dates, actual shipment dates, carrier, and pro number."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Order Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders/:orderId/shipments",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands order identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all shipment records for an order including carrier, pro number, and tracking URLs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Catalog Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/catalog/items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Keyword search query"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand name"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Product category (indoor-lighting, outdoor-lighting, controls, emergency)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Search the Acuity Brands product catalog by category, brand, or keyword. Returns product details, specifications, and pricing."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Catalog Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/catalog/items/:productNumber",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Product number or SKU"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed product information for a specific item including specifications, certifications, and pricing."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webpages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Webpages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/webpages",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Page type filter (product, category, landing)"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieve product and content web pages from Acuity Brands including page URLs, metadata, and content structure."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Webpage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/webpages/:pageId",
+            "params": [
+              {
+                "name": "pageId",
+                "value": "",
+                "type": "path",
+                "description": "Page identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve full content and metadata for a specific Acuity Brands web page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
