@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.acuity-brands.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 15 22:52:12 2026 GMT
+  hsts: false
+- host: api-docs.acuitybrands.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 19 23:59:59 2027 GMT
+  hsts: false
+- host: api.acuitybrands.com
+  https: false
+domains:
+- domain: acuity-brands.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: acuitybrands.com
+  dnssec: false
+  caa:
+  - 0 issuewild "pki.goog"
+  - 0 issue "pki.goog"
+  - 0 issue "ssl.com"
+  - 0 issuewild "ssl.com"
+  - 0 issuewild "entrust.net"
+  - 0 issue "digicert.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

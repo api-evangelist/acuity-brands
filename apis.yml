@@ -30,6 +30,10 @@ apis:
       catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering
       systems.
 common:
+  - type: DomainSecurity
+    url: security/acuity-brands-domain-security.yml
+  - type: Authentication
+    url: authentication/acuity-brands-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/acuitybrands
   - type: Website

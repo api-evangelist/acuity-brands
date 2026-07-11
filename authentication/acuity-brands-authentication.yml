@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/acuity-brands.json
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Auth using numeric User ID as username and API Key as password
+  sources:
+  - openapi/acuity-brands.json
