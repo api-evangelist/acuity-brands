@@ -30,6 +30,8 @@ apis:
       catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering
       systems.
 common:
+  - type: AgenticAccess
+    url: agentic-access/acuity-brands-agentic-access.yml
   - type: DomainSecurity
     url: security/acuity-brands-domain-security.yml
   - type: Authentication
