@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: Acuity Brands Catalog API
+  description: B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.
+  version: 1.0.0
+  contact:
+    name: Acuity Brands Developer Portal
+    url: https://api-docs.acuitybrands.com/
+servers:
+- url: https://api.acuitybrands.com/v1
+  description: Acuity Brands production API
+security:
+- BasicAuth: []
+tags:
+- name: Catalog
+  description: Product catalog and item details
+paths:
+  /catalog/items:
+    get:
+      operationId: listCatalogItems
+      summary: Acuity Brands List Catalog Items
+      description: Search the Acuity Brands product catalog by category, brand, or keyword. Returns product details, specifications, and pricing.
+      tags:
+      - Catalog
+      parameters:
+      - name: q
+        in: query
+        description: Keyword search query
+        schema:
+          type: string
+      - name: brand
+        in: query
+        description: Filter by brand name
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Product category (indoor-lighting, outdoor-lighting, controls, emergency)
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results
+        schema:
+          type: integer
+          default: 50
+      - name: cursor
+        in: query
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Catalog item list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItemList'
+        '401':
+          description: Unauthorized
+  /catalog/items/{productNumber}:
+    get:
+      operationId: getCatalogItem
+      summary: Acuity Brands Get Catalog Item
+      description: Retrieve detailed product information for a specific item including specifications, certifications, and pricing.
+      tags:
+      - Catalog
+      parameters:
+      - name: productNumber
+        in: path
+        required: true
+        description: Product number or SKU
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Catalog item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItem'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Product not found
+components:
+  schemas:
+    CatalogItem:
+      type: object
+      description: Acuity Brands product catalog item
+      properties:
+        productNumber:
+          type: string
+          description: Product number/SKU
+          example: LBL4 48L ADP
+        name:
+          type: string
+          description: Product name
+          example: 4FT LED Wrap Light 4800 Lumens Adapter
+        brand:
+          type: string
+          description: Brand name
+          example: Lithonia Lighting
+        category:
+          type: string
+          description: Product category
+          example: Indoor Lighting
+        subcategory:
+          type: string
+          description: Product subcategory
+          example: Wrap Lights
+        description:
+          type: string
+          description: Full product description
+        specifications:
+          type: object
+          description: Technical specifications
+          additionalProperties: true
+        certifications:
+          type: array
+          items:
+            type: string
+          description: Product certifications
+          example:
+          - UL Listed
+          - Energy Star
+          - DLC Listed
+        listPrice:
+          type: number
+          description: List price in USD
+          example: 89.99
+        upc:
+          type: string
+          description: UPC code
+          example: 041194682000
+        imageUrl:
+          type: string
+          description: Primary product image URL
+        dataSheetUrl:
+          type: string
+          description: Product data sheet URL
+    CatalogItemList:
+      type: object
+      description: Paginated list of catalog items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+        total:
+          type: integer
+          example: 50000
+        cursor:
+          type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using numeric User ID as username and API Key as password
