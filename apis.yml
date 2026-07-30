@@ -1,34 +1,95 @@
 aid: acuity-brands
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/acuity-brands.png
 tags:
   - Fortune 1000
 url: https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml
 modified: '2026-05-19'
 apis:
-  - aid: acuity-brands:acuity-brands-api
-    name: Acuity Brands API
-    tags:
-      - Lighting
-      - B2B
-      - Inventory
-      - Order Management
-      - Building Controls
-    properties:
-      - type: HumanURL
-        url: https://api-docs.acuitybrands.com/
-      - type: BaseURL
-        url: https://api.acuitybrands.com/v1
-      - type: OpenAPI
-        url: openapi/acuity-brands.json
-      - type: JSONSchema
-        url: json-schema/
-      - type: JSONStructure
-        url: json-structure/
-      - type: Examples
-        url: examples/
-    description: >-
-      B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product
-      catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering
-      systems.
+- aid: acuity-brands:acuity-brands-catalog-api
+  name: acuity-brands Catalog API
+  description: Product catalog and item details
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/acuity-brands-catalog-api-openapi.yml
+  - type: HumanURL
+    url: https://api-docs.acuitybrands.com/
+  - type: BaseURL
+    url: https://api.acuitybrands.com/v1
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: Examples
+    url: examples/
+- aid: acuity-brands:acuity-brands-inventory-api
+  name: acuity-brands Inventory API
+  description: Product inventory and availability
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/acuity-brands-inventory-api-openapi.yml
+  - type: HumanURL
+    url: https://api-docs.acuitybrands.com/
+  - type: BaseURL
+    url: https://api.acuitybrands.com/v1
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: Examples
+    url: examples/
+- aid: acuity-brands:acuity-brands-orders-api
+  name: acuity-brands Orders API
+  description: Order status and shipment tracking
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/acuity-brands-orders-api-openapi.yml
+  - type: HumanURL
+    url: https://api-docs.acuitybrands.com/
+  - type: BaseURL
+    url: https://api.acuitybrands.com/v1
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: Examples
+    url: examples/
+- aid: acuity-brands:acuity-brands-webpages-api
+  name: acuity-brands Webpages API
+  description: Web content and product page data
+  tags:
+  - Webpages
+  properties:
+  - type: OpenAPI
+    url: openapi/acuity-brands-webpages-api-openapi.yml
+  - type: HumanURL
+    url: https://api-docs.acuitybrands.com/
+  - type: BaseURL
+    url: https://api.acuitybrands.com/v1
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: Examples
+    url: examples/
 common:
   - type: AgenticAccess
     url: agentic-access/acuity-brands-agentic-access.yml
