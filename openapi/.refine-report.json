@@ -1,0 +1,20 @@
+{
+  "provider": "acuity-brands",
+  "sources": [
+    "acuity-brands-catalog-api-openapi.yml",
+    "acuity-brands-inventory-api-openapi.yml",
+    "acuity-brands-orders-api-openapi.yml",
+    "acuity-brands-webpages-api-openapi.yml"
+  ],
+  "outputs": [
+    "acuity-brands-catalog-api-openapi.yml",
+    "acuity-brands-inventory-api-openapi.yml",
+    "acuity-brands-orders-api-openapi.yml",
+    "acuity-brands-webpages-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
