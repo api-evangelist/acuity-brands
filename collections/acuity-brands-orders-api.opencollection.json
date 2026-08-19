@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acuity Brands Catalog Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order status (pending, processing, shipped, delivered)"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders placed on or after this date (ISO 8601)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders placed on or before this date (ISO 8601)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of orders with their current status, estimated ship dates, and tracking information."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands order identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve full order status details including line items, estimated ship dates, actual shipment dates, carrier, and pro number."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Order Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/orders/:orderId/shipments",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands order identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all shipment records for an order including carrier, pro number, and tracking URLs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acuity Brands Catalog Inventory API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/inventory",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Acuity Brands product number"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand (e.g. Lithonia, Holophane, nLight)"
+              },
+              {
+                "name": "warehouse",
+                "value": "",
+                "type": "query",
+                "description": "Filter by warehouse location code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Retrieve inventory availability for Acuity Brands products. Returns stock levels, warehouse locations, and estimated availability dates."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Inventory Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/inventory/:productNumber",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Acuity Brands product number"
+              }
+            ]
+          },
+          "docs": "Retrieve inventory availability for a specific product number including stock by warehouse and estimated ship dates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

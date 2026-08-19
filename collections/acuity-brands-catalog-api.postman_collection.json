@@ -1,0 +1,434 @@
+{
+  "item": [
+    {
+      "id": "e69bc377-d924-4dad-9e96-0107c13f5fde",
+      "name": "Catalog",
+      "description": {
+        "content": "Product catalog and item details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb00fab8-aad4-4e7a-9294-2b028f205b73",
+          "name": "Acuity Brands List Catalog Items",
+          "request": {
+            "name": "Acuity Brands List Catalog Items",
+            "description": {
+              "content": "Search the Acuity Brands product catalog by category, brand, or keyword. Returns product details, specifications, and pricing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Keyword search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand",
+                  "value": "<string>",
+                  "description": "Filter by brand name"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Product category (indoor-lighting, outdoor-lighting, controls, emergency)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a1a3834-67ab-40f9-80a8-7d82ce7a3f04",
+              "name": "Catalog item list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"name\": \"4FT LED Wrap Light 4800 Lumens Adapter\",\n      \"brand\": \"Lithonia Lighting\",\n      \"category\": \"Indoor Lighting\",\n      \"subcategory\": \"Wrap Lights\",\n      \"description\": \"string\",\n      \"specifications\": {\n        \"key_0\": \"string\"\n      },\n      \"certifications\": [\n        \"UL Listed\",\n        \"Energy Star\",\n        \"DLC Listed\"\n      ],\n      \"listPrice\": 89.99,\n      \"upc\": \"string\",\n      \"imageUrl\": \"string\",\n      \"dataSheetUrl\": \"string\"\n    },\n    {\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"name\": \"4FT LED Wrap Light 4800 Lumens Adapter\",\n      \"brand\": \"Lithonia Lighting\",\n      \"category\": \"Indoor Lighting\",\n      \"subcategory\": \"Wrap Lights\",\n      \"description\": \"string\",\n      \"specifications\": {\n        \"key_0\": 8171.682468383563,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"certifications\": [\n        \"UL Listed\",\n        \"Energy Star\",\n        \"DLC Listed\"\n      ],\n      \"listPrice\": 89.99,\n      \"upc\": \"string\",\n      \"imageUrl\": \"string\",\n      \"dataSheetUrl\": \"string\"\n    }\n  ],\n  \"total\": 50000,\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a65f4fd0-6294-4a41-959c-f56593da468d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd490202-b8ab-4841-97f1-debb9cf1d44c",
+          "name": "Acuity Brands Get Catalog Item",
+          "request": {
+            "name": "Acuity Brands Get Catalog Item",
+            "description": {
+              "content": "Retrieve detailed product information for a specific item including specifications, certifications, and pricing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog",
+                "items",
+                ":productNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productNumber",
+                  "description": "(Required) Product number or SKU"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba9d762a-5be7-4a9e-856e-c1c1d768ebd5",
+              "name": "Catalog item details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "items",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Product number or SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productNumber\": \"LBL4 48L ADP\",\n  \"name\": \"4FT LED Wrap Light 4800 Lumens Adapter\",\n  \"brand\": \"Lithonia Lighting\",\n  \"category\": \"Indoor Lighting\",\n  \"subcategory\": \"Wrap Lights\",\n  \"description\": \"string\",\n  \"specifications\": {\n    \"key_0\": false,\n    \"key_1\": true\n  },\n  \"certifications\": [\n    \"UL Listed\",\n    \"Energy Star\",\n    \"DLC Listed\"\n  ],\n  \"listPrice\": 89.99,\n  \"upc\": \"string\",\n  \"imageUrl\": \"string\",\n  \"dataSheetUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9036b476-406a-4c22-b2a4-20ce7f08d7e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "items",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Product number or SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33ed1542-f795-46d3-ad87-7b728379f79f",
+              "name": "Product not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "items",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Product number or SKU"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.acuitybrands.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e5032630-64cc-46ea-b79f-ad4fafa04440",
+    "name": "Acuity Brands Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.\n\nContact Support:\n Name: Acuity Brands Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acuity Brands Catalog API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Catalog Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/catalog/items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Keyword search query"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand name"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Product category (indoor-lighting, outdoor-lighting, controls, emergency)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Search the Acuity Brands product catalog by category, brand, or keyword. Returns product details, specifications, and pricing."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Catalog Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/catalog/items/:productNumber",
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Product number or SKU"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed product information for a specific item including specifications, certifications, and pricing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

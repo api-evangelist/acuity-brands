@@ -1,0 +1,623 @@
+{
+  "item": [
+    {
+      "id": "84ebd649-1f91-460b-8a64-3d73cd95f0f9",
+      "name": "Orders",
+      "description": {
+        "content": "Order status and shipment tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63dad58e-52bf-4cdb-a40e-62d567e7ccf6",
+          "name": "Acuity Brands List Orders",
+          "request": {
+            "name": "Acuity Brands List Orders",
+            "description": {
+              "content": "Retrieve a list of orders with their current status, estimated ship dates, and tracking information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by order status (pending, processing, shipped, delivered)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>",
+                  "description": "Filter orders placed on or after this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>",
+                  "description": "Filter orders placed on or before this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf66cf44-bcca-4e76-b16c-4186c62dd1eb",
+              "name": "Order list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"orderId\": \"ACB-2026-001234\",\n      \"purchaseOrderNumber\": \"PO-55678\",\n      \"status\": \"shipped\",\n      \"orderDate\": \"2026-04-15\",\n      \"estimatedShipDate\": \"2026-04-20\",\n      \"actualShipDate\": \"2026-04-19\",\n      \"lineItems\": [\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"description\": \"4FT LED Wrap Light\",\n          \"quantity\": 10,\n          \"unitPrice\": 45.5,\n          \"status\": \"shipped\"\n        },\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"description\": \"4FT LED Wrap Light\",\n          \"quantity\": 10,\n          \"unitPrice\": 45.5,\n          \"status\": \"shipped\"\n        }\n      ],\n      \"totalAmount\": 455,\n      \"shipToAddress\": {\n        \"name\": \"ABC Electrical Distributors\",\n        \"street\": \"123 Main St\",\n        \"city\": \"Atlanta\",\n        \"state\": \"GA\",\n        \"zip\": \"30301\"\n      }\n    },\n    {\n      \"orderId\": \"ACB-2026-001234\",\n      \"purchaseOrderNumber\": \"PO-55678\",\n      \"status\": \"shipped\",\n      \"orderDate\": \"2026-04-15\",\n      \"estimatedShipDate\": \"2026-04-20\",\n      \"actualShipDate\": \"2026-04-19\",\n      \"lineItems\": [\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"description\": \"4FT LED Wrap Light\",\n          \"quantity\": 10,\n          \"unitPrice\": 45.5,\n          \"status\": \"shipped\"\n        },\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"description\": \"4FT LED Wrap Light\",\n          \"quantity\": 10,\n          \"unitPrice\": 45.5,\n          \"status\": \"shipped\"\n        }\n      ],\n      \"totalAmount\": 455,\n      \"shipToAddress\": {\n        \"name\": \"ABC Electrical Distributors\",\n        \"street\": \"123 Main St\",\n        \"city\": \"Atlanta\",\n        \"state\": \"GA\",\n        \"zip\": \"30301\"\n      }\n    }\n  ],\n  \"total\": 200,\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76f34684-8c16-4a08-9fa4-70637a1c5f37",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45546c97-e75a-4b07-a836-cb0bb15026f9",
+          "name": "Acuity Brands Get Order",
+          "request": {
+            "name": "Acuity Brands Get Order",
+            "description": {
+              "content": "Retrieve full order status details including line items, estimated ship dates, actual shipment dates, carrier, and pro number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Acuity Brands order identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "217a542f-6123-4b83-a5c5-ca08bf15581b",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"ACB-2026-001234\",\n  \"purchaseOrderNumber\": \"PO-55678\",\n  \"status\": \"shipped\",\n  \"orderDate\": \"2026-04-15\",\n  \"estimatedShipDate\": \"2026-04-20\",\n  \"actualShipDate\": \"2026-04-19\",\n  \"lineItems\": [\n    {\n      \"lineNumber\": 1,\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"description\": \"4FT LED Wrap Light\",\n      \"quantity\": 10,\n      \"unitPrice\": 45.5,\n      \"status\": \"shipped\"\n    },\n    {\n      \"lineNumber\": 1,\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"description\": \"4FT LED Wrap Light\",\n      \"quantity\": 10,\n      \"unitPrice\": 45.5,\n      \"status\": \"shipped\"\n    }\n  ],\n  \"totalAmount\": 455,\n  \"shipToAddress\": {\n    \"name\": \"ABC Electrical Distributors\",\n    \"street\": \"123 Main St\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"zip\": \"30301\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "668adf0c-0ff5-489e-a219-df983c9984e9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "204da235-a576-420b-9d8f-459c40f9366a",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03276486-4edd-4ae0-8fcb-e665bf598075",
+          "name": "Acuity Brands Get Order Shipments",
+          "request": {
+            "name": "Acuity Brands Get Order Shipments",
+            "description": {
+              "content": "Retrieve all shipment records for an order including carrier, pro number, and tracking URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) Acuity Brands order identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0143745d-a277-4eb2-b602-fb3e4b7b9b26",
+              "name": "Shipment list for order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipments\": [\n    {\n      \"shipmentId\": \"SHP-001\",\n      \"orderId\": \"ACB-2026-001234\",\n      \"carrier\": \"UPS Freight\",\n      \"proNumber\": \"1Z999AA10123456784\",\n      \"trackingUrl\": \"https://www.ups.com/track?tracknum=1Z999AA10123456784\",\n      \"shipDate\": \"2026-04-19\",\n      \"estimatedDeliveryDate\": \"2026-04-22\",\n      \"weight\": 45.5,\n      \"lineItems\": [\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"quantityShipped\": 10\n        },\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"quantityShipped\": 10\n        }\n      ]\n    },\n    {\n      \"shipmentId\": \"SHP-001\",\n      \"orderId\": \"ACB-2026-001234\",\n      \"carrier\": \"UPS Freight\",\n      \"proNumber\": \"1Z999AA10123456784\",\n      \"trackingUrl\": \"https://www.ups.com/track?tracknum=1Z999AA10123456784\",\n      \"shipDate\": \"2026-04-19\",\n      \"estimatedDeliveryDate\": \"2026-04-22\",\n      \"weight\": 45.5,\n      \"lineItems\": [\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"quantityShipped\": 10\n        },\n        {\n          \"lineNumber\": 1,\n          \"productNumber\": \"LBL4 48L ADP\",\n          \"quantityShipped\": 10\n        }\n      ]\n    }\n  ],\n  \"total\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a2360cc-8e36-426b-9c3b-2dd975803718",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f96b5d34-156d-4e9a-b513-dd62f3b3b63b",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) Acuity Brands order identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.acuitybrands.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ee8dc3e8-7de0-45a5-82f8-d458be4c59fd",
+    "name": "Acuity Brands Catalog Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.\n\nContact Support:\n Name: Acuity Brands Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

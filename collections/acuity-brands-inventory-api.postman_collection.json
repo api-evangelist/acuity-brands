@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "1da2f11d-f118-4899-b0a5-9f8f370b2388",
+      "name": "Inventory",
+      "description": {
+        "content": "Product inventory and availability",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea88f439-0946-4aa1-b6cd-118e63e69e73",
+          "name": "Acuity Brands List Inventory",
+          "request": {
+            "name": "Acuity Brands List Inventory",
+            "description": {
+              "content": "Retrieve inventory availability for Acuity Brands products. Returns stock levels, warehouse locations, and estimated availability dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productNumber",
+                  "value": "<string>",
+                  "description": "Filter by Acuity Brands product number"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand",
+                  "value": "<string>",
+                  "description": "Filter by brand (e.g. Lithonia, Holophane, nLight)"
+                },
+                {
+                  "disabled": false,
+                  "key": "warehouse",
+                  "value": "<string>",
+                  "description": "Filter by warehouse location code"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87d672c2-8d48-4b68-bf6e-c0d594fa96e6",
+              "name": "Inventory list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "warehouse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"description\": \"4FT LED Wrap Light 4800 Lumens\",\n      \"brand\": \"Lithonia Lighting\",\n      \"totalQuantity\": 250,\n      \"warehouses\": [\n        {\n          \"code\": \"ATL\",\n          \"name\": \"Atlanta Distribution Center\",\n          \"quantity\": 150,\n          \"estimatedShipDate\": \"2026-04-22\"\n        },\n        {\n          \"code\": \"ATL\",\n          \"name\": \"Atlanta Distribution Center\",\n          \"quantity\": 150,\n          \"estimatedShipDate\": \"2026-04-22\"\n        }\n      ],\n      \"updatedAt\": \"2002-04-22T08:12:46.601Z\"\n    },\n    {\n      \"productNumber\": \"LBL4 48L ADP\",\n      \"description\": \"4FT LED Wrap Light 4800 Lumens\",\n      \"brand\": \"Lithonia Lighting\",\n      \"totalQuantity\": 250,\n      \"warehouses\": [\n        {\n          \"code\": \"ATL\",\n          \"name\": \"Atlanta Distribution Center\",\n          \"quantity\": 150,\n          \"estimatedShipDate\": \"2026-04-22\"\n        },\n        {\n          \"code\": \"ATL\",\n          \"name\": \"Atlanta Distribution Center\",\n          \"quantity\": 150,\n          \"estimatedShipDate\": \"2026-04-22\"\n        }\n      ],\n      \"updatedAt\": \"1995-09-24T13:53:44.620Z\"\n    }\n  ],\n  \"total\": 5000,\n  \"cursor\": \"eyJwYWdlIjoyfQ==\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d177803-35b0-4cfe-ac9d-77da9bb0d469",
+              "name": "Unauthorized — invalid or missing API credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "warehouse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d63f5edd-5f89-492f-9c0f-254975f72f84",
+          "name": "Acuity Brands Get Inventory Item",
+          "request": {
+            "name": "Acuity Brands Get Inventory Item",
+            "description": {
+              "content": "Retrieve inventory availability for a specific product number including stock by warehouse and estimated ship dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                ":productNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productNumber",
+                  "description": "(Required) Acuity Brands product number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c8fb6f6-cd69-4eee-a421-3ae0deb29cb0",
+              "name": "Inventory item details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Acuity Brands product number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productNumber\": \"LBL4 48L ADP\",\n  \"description\": \"4FT LED Wrap Light 4800 Lumens\",\n  \"brand\": \"Lithonia Lighting\",\n  \"totalQuantity\": 250,\n  \"warehouses\": [\n    {\n      \"code\": \"ATL\",\n      \"name\": \"Atlanta Distribution Center\",\n      \"quantity\": 150,\n      \"estimatedShipDate\": \"2026-04-22\"\n    },\n    {\n      \"code\": \"ATL\",\n      \"name\": \"Atlanta Distribution Center\",\n      \"quantity\": 150,\n      \"estimatedShipDate\": \"2026-04-22\"\n    }\n  ],\n  \"updatedAt\": \"2002-01-28T12:15:36.005Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78bcb536-e4c9-4e23-b905-4d6144af6942",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Acuity Brands product number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fbc562d-76da-4668-b05c-184894d11615",
+              "name": "Product not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productNumber",
+                      "description": "(Required) Acuity Brands product number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.acuitybrands.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a76cc702-0159-43ca-a4f9-d6362de9d885",
+    "name": "Acuity Brands Catalog Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.\n\nContact Support:\n Name: Acuity Brands Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

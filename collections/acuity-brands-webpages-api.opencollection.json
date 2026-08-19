@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acuity Brands Catalog Webpages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webpages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acuity Brands List Webpages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/webpages",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Page type filter (product, category, landing)"
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter by brand"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Retrieve product and content web pages from Acuity Brands including page URLs, metadata, and content structure."
+        },
+        {
+          "info": {
+            "name": "Acuity Brands Get Webpage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acuitybrands.com/v1/webpages/:pageId",
+            "params": [
+              {
+                "name": "pageId",
+                "value": "",
+                "type": "path",
+                "description": "Page identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve full content and metadata for a specific Acuity Brands web page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
