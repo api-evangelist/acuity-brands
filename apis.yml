@@ -108,6 +108,9 @@ apis:
   - type: Examples
     url: examples/
 common:
+  - type: CapabilityMap
+    url: capabilities/acuity-brands-capability-edges.yml
+    name: Acuity Brands Business Capability Map
   - type: AgenticAccess
     url: agentic-access/acuity-brands-agentic-access.yml
   - type: DomainSecurity
