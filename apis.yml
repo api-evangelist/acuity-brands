@@ -91,7 +91,7 @@ apis:
   name: acuity-brands Webpages API
   description: Web content and product page data
   tags:
-  - Webpages
+  - Web Pages
   tags_raw:
   - Webpages
   properties:
