@@ -87,16 +87,14 @@ apis:
     url: json-structure/
   - type: Examples
     url: examples/
-- aid: acuity-brands:acuity-brands-webpages-api
-  name: acuity-brands Webpages API
+- aid: acuity-brands:acuity-brands-web-pages-api
+  name: Acuity Brands Web Pages API
   description: Web content and product page data
   tags:
   - Web Pages
-  tags_raw:
-  - Webpages
   properties:
   - type: OpenAPI
-    url: openapi/acuity-brands-webpages-api-openapi.yml
+    url: openapi/acuity-brands-web-pages-api-openapi.yml
   - type: HumanURL
     url: https://api-docs.acuitybrands.com/
   - type: BaseURL
