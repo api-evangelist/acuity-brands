@@ -26,6 +26,9 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/acuity-brands.png
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
 tags:
   - Fortune 1000
 url: https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml
