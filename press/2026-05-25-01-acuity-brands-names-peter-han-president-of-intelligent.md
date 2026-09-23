@@ -1,7 +1,9 @@
 ---
 title: Acuity Brands Names Peter Han President of Intelligent ...
 url: https://www.investors.acuitybrands.com/news-releases/news-release-details/acuity-brands-names-peter-han-president-intelligent-spaces-group
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Acuity Brands" press release artificial intelligence'
 position: 1
 source: serpapi-google

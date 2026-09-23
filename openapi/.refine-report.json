@@ -1,10 +1,7 @@
 {
   "provider": "acuity-brands",
   "sources": [
-    "acuity-brands-catalog-api-openapi.yml",
-    "acuity-brands-inventory-api-openapi.yml",
-    "acuity-brands-orders-api-openapi.yml",
-    "acuity-brands-webpages-api-openapi.yml"
+    "_original/acuity-brands.json"
   ],
   "outputs": [
     "acuity-brands-catalog-api-openapi.yml",
@@ -12,9 +9,21 @@
     "acuity-brands-orders-api-openapi.yml",
     "acuity-brands-webpages-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "acuity-brands.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: acuity-brands-web-pages-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 4 total)"
+  ],
+  "skipped": [
+    "acuity-brands-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "acuity-brands-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "acuity-brands-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "acuity-brands-web-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

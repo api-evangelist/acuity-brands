@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Acuity Brands Catalog API
   description: B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.
@@ -85,6 +85,19 @@ paths:
           description: Product not found
 components:
   schemas:
+    CatalogItemList:
+      type: object
+      description: Paginated list of catalog items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+        total:
+          type: integer
+          example: 50000
+        cursor:
+          type: string
     CatalogItem:
       type: object
       description: Acuity Brands product catalog item
@@ -139,19 +152,6 @@ components:
         dataSheetUrl:
           type: string
           description: Product data sheet URL
-    CatalogItemList:
-      type: object
-      description: Paginated list of catalog items
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-        total:
-          type: integer
-          example: 50000
-        cursor:
-          type: string
   securitySchemes:
     BasicAuth:
       type: http

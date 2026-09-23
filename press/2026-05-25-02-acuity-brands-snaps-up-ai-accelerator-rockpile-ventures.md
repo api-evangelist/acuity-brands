@@ -1,7 +1,9 @@
 ---
 title: Acuity Brands Snaps Up AI Accelerator Rockpile Ventures
 url: https://www.mdm.com/news/mergers-acquisitions/acuity-buys-rockpile/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Acuity Brands" press release artificial intelligence'
 position: 2
 source: serpapi-google
