@@ -117,6 +117,81 @@ paths:
           description: Order not found
 components:
   schemas:
+    Shipment:
+      type: object
+      description: Shipment record for an order
+      properties:
+        shipmentId:
+          type: string
+          description: Shipment identifier
+          example: SHP-001
+        orderId:
+          type: string
+          description: Associated order ID
+          example: ACB-2026-001234
+        carrier:
+          type: string
+          description: Shipping carrier name
+          example: UPS Freight
+        proNumber:
+          type: string
+          description: Carrier PRO/tracking number
+          example: 1Z999AA10123456784
+        trackingUrl:
+          type: string
+          description: Carrier tracking URL
+          example: https://www.ups.com/track?tracknum=1Z999AA10123456784
+        shipDate:
+          type: string
+          format: date
+          example: '2026-04-19'
+        estimatedDeliveryDate:
+          type: string
+          format: date
+          example: '2026-04-22'
+        weight:
+          type: number
+          description: Shipment weight in lbs
+          example: 45.5
+        lineItems:
+          type: array
+          description: Line items in this shipment
+          items:
+            type: object
+            properties:
+              lineNumber:
+                type: integer
+                example: 1
+              productNumber:
+                type: string
+                example: LBL4 48L ADP
+              quantityShipped:
+                type: integer
+                example: 10
+    ShipmentList:
+      type: object
+      description: List of shipments for an order
+      properties:
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shipment'
+        total:
+          type: integer
+          example: 2
+    OrderList:
+      type: object
+      description: Paginated list of orders
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        total:
+          type: integer
+          example: 200
+        cursor:
+          type: string
     Order:
       type: object
       description: An Acuity Brands order with status and shipment information
@@ -199,81 +274,6 @@ components:
             zip:
               type: string
               example: '30301'
-    Shipment:
-      type: object
-      description: Shipment record for an order
-      properties:
-        shipmentId:
-          type: string
-          description: Shipment identifier
-          example: SHP-001
-        orderId:
-          type: string
-          description: Associated order ID
-          example: ACB-2026-001234
-        carrier:
-          type: string
-          description: Shipping carrier name
-          example: UPS Freight
-        proNumber:
-          type: string
-          description: Carrier PRO/tracking number
-          example: 1Z999AA10123456784
-        trackingUrl:
-          type: string
-          description: Carrier tracking URL
-          example: https://www.ups.com/track?tracknum=1Z999AA10123456784
-        shipDate:
-          type: string
-          format: date
-          example: '2026-04-19'
-        estimatedDeliveryDate:
-          type: string
-          format: date
-          example: '2026-04-22'
-        weight:
-          type: number
-          description: Shipment weight in lbs
-          example: 45.5
-        lineItems:
-          type: array
-          description: Line items in this shipment
-          items:
-            type: object
-            properties:
-              lineNumber:
-                type: integer
-                example: 1
-              productNumber:
-                type: string
-                example: LBL4 48L ADP
-              quantityShipped:
-                type: integer
-                example: 10
-    OrderList:
-      type: object
-      description: Paginated list of orders
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        total:
-          type: integer
-          example: 200
-        cursor:
-          type: string
-    ShipmentList:
-      type: object
-      description: List of shipments for an order
-      properties:
-        shipments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Shipment'
-        total:
-          type: integer
-          example: 2
   securitySchemes:
     BasicAuth:
       type: http

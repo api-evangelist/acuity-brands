@@ -80,6 +80,19 @@ paths:
           description: Page not found
 components:
   schemas:
+    WebpageList:
+      type: object
+      description: Paginated list of web pages
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webpage'
+        total:
+          type: integer
+          example: 10000
+        cursor:
+          type: string
     Webpage:
       type: object
       description: Acuity Brands product or content web page
@@ -120,19 +133,6 @@ components:
           type: string
           format: date-time
           description: Page last modified timestamp
-    WebpageList:
-      type: object
-      description: Paginated list of web pages
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webpage'
-        total:
-          type: integer
-          example: 10000
-        cursor:
-          type: string
   securitySchemes:
     BasicAuth:
       type: http
