@@ -85,19 +85,6 @@ paths:
           description: Product not found
 components:
   schemas:
-    CatalogItemList:
-      type: object
-      description: Paginated list of catalog items
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-        total:
-          type: integer
-          example: 50000
-        cursor:
-          type: string
     CatalogItem:
       type: object
       description: Acuity Brands product catalog item
@@ -152,6 +139,19 @@ components:
         dataSheetUrl:
           type: string
           description: Product data sheet URL
+    CatalogItemList:
+      type: object
+      description: Paginated list of catalog items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+        total:
+          type: integer
+          example: 50000
+        cursor:
+          type: string
   securitySchemes:
     BasicAuth:
       type: http
