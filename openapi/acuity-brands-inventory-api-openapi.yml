@@ -85,20 +85,6 @@ paths:
           description: Product not found
 components:
   schemas:
-    InventoryList:
-      type: object
-      description: Paginated list of inventory items
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryItem'
-        total:
-          type: integer
-          example: 5000
-        cursor:
-          type: string
-          example: eyJwYWdlIjoyfQ==
     InventoryItem:
       type: object
       description: Inventory availability record for a product
@@ -142,6 +128,20 @@ components:
           type: string
           format: date-time
           description: Last inventory update time
+    InventoryList:
+      type: object
+      description: Paginated list of inventory items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryItem'
+        total:
+          type: integer
+          example: 5000
+        cursor:
+          type: string
+          example: eyJwYWdlIjoyfQ==
   securitySchemes:
     BasicAuth:
       type: http

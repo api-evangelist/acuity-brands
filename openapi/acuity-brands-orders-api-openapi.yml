@@ -117,30 +117,6 @@ paths:
           description: Order not found
 components:
   schemas:
-    OrderList:
-      type: object
-      description: Paginated list of orders
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        total:
-          type: integer
-          example: 200
-        cursor:
-          type: string
-    ShipmentList:
-      type: object
-      description: List of shipments for an order
-      properties:
-        shipments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Shipment'
-        total:
-          type: integer
-          example: 2
     Order:
       type: object
       description: An Acuity Brands order with status and shipment information
@@ -223,6 +199,30 @@ components:
             zip:
               type: string
               example: '30301'
+    OrderList:
+      type: object
+      description: Paginated list of orders
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        total:
+          type: integer
+          example: 200
+        cursor:
+          type: string
+    ShipmentList:
+      type: object
+      description: List of shipments for an order
+      properties:
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shipment'
+        total:
+          type: integer
+          example: 2
     Shipment:
       type: object
       description: Shipment record for an order
