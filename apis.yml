@@ -109,6 +109,12 @@ apis:
   - type: Examples
     url: examples/
 common:
+  - type: Plans
+    url: plans/acuity-brands-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/acuity-brands-rate-limits.yml
+  - type: FinOps
+    url: finops/acuity-brands-finops.yml
   - type: CapabilityMap
     url: capabilities/acuity-brands-capability-edges.yml
     name: Acuity Brands Business Capability Map
