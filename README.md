@@ -1,4 +1,4 @@
-# acuity-brands (acuity-brands)
+# Acuity Brands
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,44 +66,185 @@
 
 Acuity Brands is a provider of lighting, lighting controls, building management systems, and location-aware applications for commercial, industrial, institutional, and residential markets.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/acuity-brands/refs/heads/main/apis.yml)
+**Areas:** Fortune 1000
 
-## Timestamps
+## Acuity Brands on APIs.io
 
-- **Modified:** 2026-05-19
+Everything profiled for Acuity Brands is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/acuity-brands/](https://apis.io/providers/acuity-brands/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (4)
 
-### Acuity Brands API
+- [acuity-brands Catalog API](https://apis.io/apis/acuity-brands/acuity-brands-catalog-api/) — Product catalog and item details
+- [acuity-brands Inventory API](https://apis.io/apis/acuity-brands/acuity-brands-inventory-api/) — Product inventory and availability
+- [acuity-brands Orders API](https://apis.io/apis/acuity-brands/acuity-brands-orders-api/) — Order status and shipment tracking
+- [Acuity Brands Web Pages API](https://apis.io/apis/acuity-brands/acuity-brands-web-pages-api/) — Web content and product page data
 
-B2B REST APIs for Acuity Brands distributors covering inventory availability, order status tracking, product catalog, and web content. Enables integration of Acuity Brands data into distributor ERP, e-commerce, and ordering systems.
+### Published properties
 
-#### Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Lighting
-- B2B
-- Inventory
-- Order Management
-- Building Controls
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Human U R L](https://api-docs.acuitybrands.com/)
-- [Base U R L](https://api.acuitybrands.com/v1)
-- [OpenAPI](openapi/acuity-brands.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/acuity-brands.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/acuity-brands.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/)
-- [Examples](examples/)
+- [Acuity Brands Agentic Access](https://apis.io/agentic-access/acuity-brands/acuity-brands-agentic-access/)
 
-## Common Properties
+#### JSON Schema (10)
 
-- [LinkedIn](https://www.linkedin.com/company/acuitybrands)
+The data models the API reads and writes.
+
+- [CatalogItem](https://apis.io/schemas/acuity-brands/acuity-brands-catalog-item/)
+- [CatalogItemList](https://apis.io/schemas/acuity-brands/acuity-brands-catalog-item-list/)
+- [InventoryItem](https://apis.io/schemas/acuity-brands/acuity-brands-inventory-item/)
+- [InventoryList](https://apis.io/schemas/acuity-brands/acuity-brands-inventory-list/)
+- [Order](https://apis.io/schemas/acuity-brands/acuity-brands-order/)
+- [OrderList](https://apis.io/schemas/acuity-brands/acuity-brands-order-list/)
+- [Shipment](https://apis.io/schemas/acuity-brands/acuity-brands-shipment/)
+- [ShipmentList](https://apis.io/schemas/acuity-brands/acuity-brands-shipment-list/)
+- [Webpage](https://apis.io/schemas/acuity-brands/acuity-brands-webpage/)
+- [WebpageList](https://apis.io/schemas/acuity-brands/acuity-brands-webpage-list/)
+
+#### JSON Structure (10)
+
+Data models expressed in JSON Structure.
+
+- [Acuity Brands Catalog Item List Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-catalog-item-list-structure/)
+- [Acuity Brands Catalog Item Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-catalog-item-structure/)
+- [Acuity Brands Inventory Item Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-inventory-item-structure/)
+- [Acuity Brands Inventory List Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-inventory-list-structure/)
+- [Acuity Brands Order List Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-order-list-structure/)
+- [Acuity Brands Order Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-order-structure/)
+- [Acuity Brands Shipment List Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-shipment-list-structure/)
+- [Acuity Brands Shipment Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-shipment-structure/)
+- [Acuity Brands Webpage List Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-webpage-list-structure/)
+- [Acuity Brands Webpage Structure](https://apis.io/json-structure/acuity-brands/acuity-brands-webpage-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Acuity Brands Context](https://apis.io/jsonld/acuity-brands/acuity-brands-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Acuity Brands Vocabulary](https://apis.io/vocabularies/acuity-brands/acuity-brands-vocabulary/)
+
+#### Examples (10)
+
+Example requests and responses.
+
+- [Acuity Brands Catalog Item Example](https://apis.io/examples/acuity-brands/acuity-brands-catalog-item-example/)
+- [Acuity Brands Catalog Item List Example](https://apis.io/examples/acuity-brands/acuity-brands-catalog-item-list-example/)
+- [Acuity Brands Inventory Item Example](https://apis.io/examples/acuity-brands/acuity-brands-inventory-item-example/)
+- [Acuity Brands Inventory List Example](https://apis.io/examples/acuity-brands/acuity-brands-inventory-list-example/)
+- [Acuity Brands Order Example](https://apis.io/examples/acuity-brands/acuity-brands-order-example/)
+- [Acuity Brands Order List Example](https://apis.io/examples/acuity-brands/acuity-brands-order-list-example/)
+- [Acuity Brands Shipment Example](https://apis.io/examples/acuity-brands/acuity-brands-shipment-example/)
+- [Acuity Brands Shipment List Example](https://apis.io/examples/acuity-brands/acuity-brands-shipment-list-example/)
+- [Acuity Brands Webpage Example](https://apis.io/examples/acuity-brands/acuity-brands-webpage-example/)
+- [Acuity Brands Webpage List Example](https://apis.io/examples/acuity-brands/acuity-brands-webpage-list-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Acuity Brands API](https://apis.io/collections/acuity-brands/open-acuity-brands/)
+- [Acuity Brands Catalog API](https://apis.io/collections/acuity-brands/open-acuity-brands-catalog-api/)
+- [Acuity Brands Catalog Inventory API](https://apis.io/collections/acuity-brands/open-acuity-brands-inventory-api/)
+- [Acuity Brands Catalog Orders API](https://apis.io/collections/acuity-brands/open-acuity-brands-orders-api/)
+- [Acuity Brands Catalog Webpages API](https://apis.io/collections/acuity-brands/open-acuity-brands-webpages-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Acuity Brands — jsonschema rules](https://apis.io/rules/acuity-brands/acuity-brands-jsonschema-spectral-rules/)
+- [Acuity Brands API Rules](https://apis.io/rules/acuity-brands/acuity-brands-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Acuity Brands Authentication](https://apis.io/security/acuity-brands/acuity-brands-authentication/)
+- [Acuity Brands Domain Security](https://apis.io/security/acuity-brands/acuity-brands-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Acuity Brands Plans Pricing](https://apis.io/plans/acuity-brands/acuity-brands-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Acuity Brands Rate Limits](https://apis.io/rate-limits/acuity-brands/acuity-brands-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Acuity Brands Finops](https://apis.io/finops/acuity-brands/acuity-brands-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.acuity-brands.com)
-- [Portal](https://api-docs.acuitybrands.com/)
 - [Documentation](https://api-docs.acuitybrands.com/docs/intro/)
-- [GitHub Organization](https://github.com/acuitybrands)
-- [Spectral Rules](rules/acuity-brands-spectral-rules.yml)
-- [Vocabulary](vocabulary/acuity-brands-vocabulary.yaml)
-- [JSON-LD](json-ld/acuity-brands-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [GitHub](https://github.com/acuitybrands)
+
+## API Evangelist rating
+
+**Kin Score 28.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 25.0 |
+| Contract quality | 60.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 5.3 |
+
+**Agent readiness 22.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/acuity-brands/](https://apis.io/providers/acuity-brands/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Acuity Brands: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/acuity-brands/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
