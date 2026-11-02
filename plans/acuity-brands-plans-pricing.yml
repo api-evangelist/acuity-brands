@@ -1,0 +1,67 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Acuity Brands
+providerId: acuity-brands
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Lighting
+  - B2B
+  - Inventory
+  - Order Management
+  - Building Controls
+description: Acuity Brands is a major US lighting and building controls manufacturer. The Acuity Brands
+  API is a distributor / partner integration surface — not a public commercial product. There is no published
+  pricing or self-service plan; access is provisioned through the Acuity Brands distributor / integration
+  partner program.
+sources:
+  - https://api-docs.acuitybrands.com/
+  - https://www.acuitybrands.com/
+notes: No public pricing page. The API is a B2B integration channel for authorized distributors and partners.
+  Reconciled flag is false because there are no provider-published price points.
+plans:
+  - id: acuity-brands-distributor
+    name: Distributor / Partner API Access
+    type: enterprise
+    description: API access tied to the distributor or integration-partner relationship with Acuity
+      Brands; not separately metered or priced.
+    entries:
+      - label: Distributor agreement
+        name: distributor_access
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: US
+        unit: 1
+        price: included with distributor agreement
+        userMultiplied: false
+    elements:
+      - name: Inventory availability
+      - name: Order status
+      - name: Product catalog
+      - name: Web content
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  plans:
+  - name: Distributor / Partner API Access
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
